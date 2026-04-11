@@ -1,0 +1,1200 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>IEQ Costeira - Igreja do Evangelho Quadrangular | Araucaria - PR</title>
+  <meta name="description" content="IEQ Costeira - Igreja do Evangelho Quadrangular em Araucaria, Parana. Cultos, celulas, ministerios e comunhao." />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Playfair+Display:ital,wght@0,400;1,400&display=swap" rel="stylesheet" />
+  <style>
+    *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+
+    :root {
+      --bg: #ffffff;
+      --bg-alt: #f4f6f8;
+      --bg-dark: #0a0f1a;
+      --text: #0a0f1a;
+      --text-light: #64748b;
+      --text-muted: #94a3b8;
+      --accent: #1e40af;
+      --accent-light: #3b82f6;
+      --border: #e2e8f0;
+      --border-dark: #1e293b;
+      --white: #ffffff;
+    }
+
+    html { scroll-behavior: smooth; }
+
+    body {
+      font-family: 'Inter', sans-serif;
+      background: var(--bg);
+      color: var(--text);
+      line-height: 1.6;
+      overflow-x: hidden;
+      -webkit-font-smoothing: antialiased;
+    }
+
+    ::selection {
+      background: var(--accent);
+      color: var(--white);
+    }
+
+    img { max-width: 100%; display: block; }
+
+    a { text-decoration: none; color: inherit; }
+
+    .container {
+      max-width: 1280px;
+      margin: 0 auto;
+      padding: 0 24px;
+    }
+
+    /* ============ NAV ============ */
+    .nav {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      z-index: 50;
+      padding: 24px;
+      display: flex;
+      justify-content: space-between;
+      align-items: flex-start;
+      mix-blend-mode: difference;
+      color: var(--white);
+      pointer-events: none;
+    }
+
+    .nav-brand { pointer-events: auto; }
+    .nav-brand-name {
+      font-weight: 700;
+      font-size: 1.125rem;
+      letter-spacing: -0.03em;
+      text-transform: uppercase;
+    }
+    .nav-brand-sub {
+      display: block;
+      font-size: 0.65rem;
+      letter-spacing: 0.15em;
+      opacity: 0.6;
+      margin-top: 2px;
+      text-transform: uppercase;
+    }
+
+    .nav-toggle {
+      pointer-events: auto;
+      background: none;
+      border: none;
+      color: inherit;
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      font-family: inherit;
+    }
+    .nav-toggle-text {
+      font-size: 0.65rem;
+      text-transform: uppercase;
+      letter-spacing: 0.15em;
+    }
+    .hamburger { display: flex; flex-direction: column; gap: 5px; }
+    .hamburger span {
+      display: block;
+      width: 24px;
+      height: 1.5px;
+      background: currentColor;
+      transition: transform 0.3s, opacity 0.3s;
+    }
+
+    @media (max-width: 768px) {
+      .nav-toggle-text { display: none; }
+    }
+
+    /* ============ FULLSCREEN MENU ============ */
+    .menu-overlay {
+      position: fixed;
+      inset: 0;
+      background: var(--bg-dark);
+      z-index: 60;
+      color: var(--white);
+      display: flex;
+      flex-direction: column;
+      opacity: 0;
+      pointer-events: none;
+      transition: opacity 0.4s cubic-bezier(0.22, 1, 0.36, 1);
+    }
+    .menu-overlay.active {
+      opacity: 1;
+      pointer-events: auto;
+    }
+
+    .menu-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: flex-start;
+      padding: 24px;
+    }
+
+    .menu-close {
+      background: none;
+      border: none;
+      color: var(--white);
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      font-family: inherit;
+      font-size: 0.65rem;
+      text-transform: uppercase;
+      letter-spacing: 0.15em;
+    }
+    .menu-close svg { width: 24px; height: 24px; }
+
+    .menu-content {
+      flex: 1;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      padding: 0 24px;
+    }
+
+    @media (min-width: 768px) {
+      .menu-content { padding: 0 96px; }
+    }
+
+    .menu-links { list-style: none; display: flex; flex-direction: column; gap: 16px; }
+    .menu-links a {
+      font-size: clamp(2.5rem, 6vw, 4.5rem);
+      font-weight: 300;
+      letter-spacing: -0.03em;
+      transition: padding-left 0.3s;
+      display: inline-flex;
+      align-items: baseline;
+      gap: 8px;
+    }
+    .menu-links a:hover { padding-left: 16px; }
+    .menu-links .menu-num {
+      font-size: 1rem;
+      opacity: 0;
+      color: var(--text-muted);
+      transition: opacity 0.3s;
+      vertical-align: super;
+    }
+    .menu-links a:hover .menu-num { opacity: 1; }
+
+    /* ============ HERO ============ */
+    .hero {
+      position: relative;
+      height: 100vh;
+      width: 100%;
+      overflow: hidden;
+      display: flex;
+      align-items: flex-end;
+      background: var(--bg-alt);
+      border-bottom: 1px solid var(--border);
+    }
+
+    .hero-bg {
+      position: absolute;
+      inset: 0;
+      background: url('https://images.unsplash.com/photo-1438232992991-995b7058bbb3?q=80&w=2400&auto=format&fit=crop') center/cover no-repeat;
+      filter: grayscale(100%);
+      opacity: 0.15;
+    }
+
+    .hero-content {
+      position: relative;
+      z-index: 10;
+      width: 100%;
+      max-width: 1280px;
+      margin: 0 auto;
+      padding: 0 24px 96px;
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: 24px;
+    }
+
+    @media (min-width: 1024px) {
+      .hero-content { grid-template-columns: 2fr 1fr; }
+    }
+
+    .hero-title {
+      font-size: clamp(3rem, 12vw, 10rem);
+      line-height: 0.85;
+      font-weight: 500;
+      letter-spacing: -0.04em;
+      text-transform: uppercase;
+      color: var(--text);
+    }
+    .hero-title .italic {
+      font-family: 'Playfair Display', serif;
+      font-style: italic;
+      font-weight: 400;
+    }
+
+    .hero-right {
+      display: flex;
+      flex-direction: column;
+      justify-content: flex-end;
+      align-items: flex-start;
+    }
+
+    @media (min-width: 1024px) {
+      .hero-right { align-items: flex-end; text-align: right; }
+    }
+
+    .hero-desc {
+      font-size: 0.875rem;
+      max-width: 320px;
+      line-height: 1.7;
+      color: var(--text-light);
+      margin-bottom: 48px;
+    }
+
+    .btn-outline {
+      display: inline-flex;
+      align-items: center;
+      gap: 12px;
+      font-size: 0.7rem;
+      text-transform: uppercase;
+      letter-spacing: 0.15em;
+      border: 1px solid var(--text);
+      padding: 12px 24px;
+      color: var(--text);
+      background: transparent;
+      cursor: pointer;
+      font-family: inherit;
+      transition: background 0.3s, color 0.3s;
+    }
+    .btn-outline:hover {
+      background: var(--text);
+      color: var(--white);
+    }
+    .btn-outline svg {
+      width: 16px;
+      height: 16px;
+      transition: transform 0.3s;
+    }
+    .btn-outline:hover svg { transform: translateY(2px); }
+
+    /* ============ SECTIONS ============ */
+    .section {
+      padding: 128px 0;
+    }
+
+    .section-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: flex-end;
+      margin-bottom: 80px;
+      padding-bottom: 24px;
+      border-bottom: 1px solid var(--border);
+    }
+    .section-title {
+      font-size: clamp(2rem, 5vw, 3.75rem);
+      font-weight: 300;
+      letter-spacing: -0.03em;
+      text-transform: uppercase;
+    }
+    .section-label {
+      font-size: 0.65rem;
+      letter-spacing: 0.15em;
+      text-transform: uppercase;
+      display: none;
+    }
+    @media (min-width: 768px) {
+      .section-label { display: block; }
+    }
+
+    /* ============ SOBRE ============ */
+    .about { background: var(--bg-alt); }
+    .about-grid {
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: 48px;
+    }
+    @media (min-width: 1024px) {
+      .about-grid { grid-template-columns: 1fr 2fr; }
+    }
+
+    .about-label {
+      font-size: 0.65rem;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.15em;
+      position: sticky;
+      top: 128px;
+    }
+
+    .about-text-large {
+      font-size: clamp(1.5rem, 3.5vw, 3rem);
+      font-weight: 300;
+      line-height: 1.15;
+      letter-spacing: -0.02em;
+      margin-bottom: 48px;
+    }
+
+    .about-columns {
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: 48px;
+    }
+    @media (min-width: 768px) {
+      .about-columns { grid-template-columns: 1fr 1fr; }
+    }
+    .about-columns p {
+      font-size: 0.875rem;
+      line-height: 1.7;
+      color: var(--text-light);
+    }
+
+    .stats-grid {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 32px;
+      margin-top: 96px;
+      padding-top: 32px;
+      border-top: 1px solid var(--border);
+    }
+    @media (min-width: 768px) {
+      .stats-grid { grid-template-columns: repeat(4, 1fr); }
+    }
+    .stat-value {
+      font-size: 1.875rem;
+      font-weight: 500;
+      margin-bottom: 4px;
+      display: block;
+    }
+    .stat-label {
+      font-size: 0.65rem;
+      text-transform: uppercase;
+      letter-spacing: 0.15em;
+      color: var(--text-muted);
+    }
+
+    /* ============ VISAO CELULAR ============ */
+    .vision { background: var(--bg); }
+    .vision-grid {
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: 48px;
+    }
+    @media (min-width: 1024px) {
+      .vision-grid { grid-template-columns: 1fr 1fr; }
+    }
+
+    .vision-left {
+      display: flex;
+      flex-direction: column;
+      gap: 24px;
+    }
+
+    .vision-title {
+      font-size: clamp(2rem, 4vw, 3.5rem);
+      font-weight: 300;
+      letter-spacing: -0.03em;
+      line-height: 1.1;
+    }
+    .vision-title .italic {
+      font-family: 'Playfair Display', serif;
+      font-style: italic;
+      font-weight: 400;
+    }
+
+    .vision-desc {
+      font-size: 0.875rem;
+      line-height: 1.7;
+      color: var(--text-light);
+      max-width: 500px;
+    }
+
+    .vision-image {
+      aspect-ratio: 4 / 5;
+      overflow: hidden;
+      position: relative;
+    }
+    .vision-image img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      filter: grayscale(100%);
+      transition: filter 0.7s, transform 0.7s;
+    }
+    .vision-image:hover img {
+      filter: grayscale(0);
+      transform: scale(1.03);
+    }
+
+    /* ============ CELULAS ============ */
+    .cells { background: var(--bg-alt); }
+    .cells-grid {
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: 24px;
+    }
+    @media (min-width: 768px) {
+      .cells-grid { grid-template-columns: repeat(2, 1fr); }
+    }
+
+    .cell-card {
+      position: relative;
+      overflow: hidden;
+      aspect-ratio: 4 / 5;
+      display: flex;
+      flex-direction: column;
+      justify-content: flex-end;
+      padding: 32px;
+      color: var(--white);
+      cursor: pointer;
+    }
+    .cell-card-bg {
+      position: absolute;
+      inset: 0;
+      z-index: 0;
+    }
+    .cell-card-bg img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      filter: grayscale(100%);
+      transition: filter 0.7s, transform 0.7s;
+    }
+    .cell-card:hover .cell-card-bg img {
+      filter: grayscale(0);
+      transform: scale(1.05);
+    }
+    .cell-card::after {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(to top, rgba(10,15,26,0.85) 0%, rgba(10,15,26,0.2) 50%, transparent 100%);
+      z-index: 1;
+      transition: background 0.5s;
+    }
+    .cell-card:hover::after {
+      background: linear-gradient(to top, rgba(30,64,175,0.85) 0%, rgba(30,64,175,0.3) 50%, transparent 100%);
+    }
+
+    .cell-card-content {
+      position: relative;
+      z-index: 2;
+    }
+    .cell-card-title {
+      font-size: 1.5rem;
+      font-weight: 500;
+      letter-spacing: -0.02em;
+      margin-bottom: 4px;
+    }
+    .cell-card-desc {
+      font-size: 0.8rem;
+      line-height: 1.6;
+      opacity: 0.8;
+      max-width: 280px;
+    }
+    .cell-card-tag {
+      display: inline-block;
+      font-size: 0.6rem;
+      text-transform: uppercase;
+      letter-spacing: 0.15em;
+      border: 1px solid rgba(255,255,255,0.4);
+      padding: 4px 12px;
+      margin-bottom: 12px;
+    }
+
+    /* ============ MINISTERIOS ============ */
+    .ministries { background: var(--bg); }
+
+    .ministry-list { display: flex; flex-direction: column; }
+    .ministry-item {
+      padding: 40px 0;
+      border-top: 1px solid var(--border);
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: 16px;
+      align-items: center;
+      transition: background 0.3s, padding-left 0.3s;
+      cursor: default;
+    }
+    @media (min-width: 768px) {
+      .ministry-item { grid-template-columns: 80px 1fr 2fr auto; gap: 24px; }
+    }
+    .ministry-item:last-child {
+      border-bottom: 1px solid var(--border);
+    }
+    .ministry-item:hover {
+      padding-left: 16px;
+    }
+
+    .ministry-num {
+      font-size: 0.65rem;
+      letter-spacing: 0.15em;
+      color: var(--text-muted);
+    }
+    .ministry-name {
+      font-size: clamp(1.25rem, 3vw, 2.25rem);
+      font-weight: 300;
+      letter-spacing: -0.02em;
+    }
+    .ministry-desc {
+      font-size: 0.8rem;
+      color: var(--text-light);
+      line-height: 1.6;
+    }
+    .ministry-tag {
+      font-size: 0.6rem;
+      text-transform: uppercase;
+      letter-spacing: 0.15em;
+      border: 1px solid var(--border);
+      padding: 4px 12px;
+      display: none;
+      white-space: nowrap;
+    }
+    @media (min-width: 768px) {
+      .ministry-tag { display: inline-block; }
+    }
+
+    /* ============ CONTEUDO DIGITAL ============ */
+    .digital { background: var(--bg-alt); }
+    .digital-grid {
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: 24px;
+    }
+    @media (min-width: 768px) {
+      .digital-grid { grid-template-columns: repeat(3, 1fr); }
+    }
+
+    .digital-card {
+      background: var(--bg);
+      border: 1px solid var(--border);
+      padding: 40px 32px;
+      display: flex;
+      flex-direction: column;
+      gap: 20px;
+      transition: border-color 0.3s, transform 0.3s;
+    }
+    .digital-card:hover {
+      border-color: var(--accent);
+      transform: translateY(-4px);
+    }
+
+    .digital-card-icon {
+      width: 48px;
+      height: 48px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      background: var(--bg-alt);
+      border: 1px solid var(--border);
+    }
+    .digital-card-icon svg {
+      width: 24px;
+      height: 24px;
+      color: var(--accent);
+    }
+
+    .digital-card-title {
+      font-size: 1.25rem;
+      font-weight: 500;
+      letter-spacing: -0.02em;
+    }
+    .digital-card-desc {
+      font-size: 0.8rem;
+      line-height: 1.6;
+      color: var(--text-light);
+      flex: 1;
+    }
+    .digital-card-link {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      font-size: 0.7rem;
+      text-transform: uppercase;
+      letter-spacing: 0.15em;
+      color: var(--accent);
+      font-weight: 500;
+      transition: gap 0.3s;
+    }
+    .digital-card-link:hover { gap: 14px; }
+    .digital-card-link svg {
+      width: 14px;
+      height: 14px;
+    }
+
+    /* ============ FOOTER ============ */
+    .footer {
+      background: var(--bg-dark);
+      color: var(--white);
+      padding: 128px 0 48px;
+    }
+
+    .footer-top {
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: 48px;
+      margin-bottom: 128px;
+    }
+    @media (min-width: 768px) {
+      .footer-top { grid-template-columns: repeat(2, 1fr); }
+    }
+    @media (min-width: 1024px) {
+      .footer-top { grid-template-columns: 2fr 1fr 1fr 1fr; }
+    }
+
+    .footer-cta-title {
+      font-size: 1.5rem;
+      font-weight: 500;
+      letter-spacing: -0.02em;
+      line-height: 1.3;
+      margin-bottom: 32px;
+    }
+    .footer-cta-email {
+      display: inline-flex;
+      align-items: center;
+      gap: 12px;
+      font-size: 1rem;
+      color: #94a3b8;
+      transition: color 0.3s;
+    }
+    .footer-cta-email:hover { color: var(--white); }
+    .footer-cta-email svg { width: 20px; height: 20px; }
+
+    .footer-col-title {
+      font-size: 0.65rem;
+      text-transform: uppercase;
+      letter-spacing: 0.15em;
+      color: var(--text-muted);
+      margin-bottom: 16px;
+    }
+    .footer-col p,
+    .footer-col a {
+      font-size: 0.875rem;
+      line-height: 1.7;
+      color: #cbd5e1;
+    }
+    .footer-col a {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      margin-bottom: 8px;
+      transition: color 0.3s;
+    }
+    .footer-col a:hover { color: var(--white); }
+    .footer-col a svg { width: 16px; height: 16px; }
+
+    .footer-bottom {
+      display: flex;
+      flex-direction: column;
+      gap: 32px;
+      border-top: 1px solid var(--border-dark);
+      padding-top: 32px;
+    }
+    @media (min-width: 768px) {
+      .footer-bottom {
+        flex-direction: row;
+        justify-content: space-between;
+        align-items: flex-end;
+      }
+    }
+
+    .footer-big-text {
+      font-size: clamp(4rem, 15vw, 12rem);
+      line-height: 0.8;
+      font-weight: 700;
+      letter-spacing: -0.04em;
+      color: #1e293b;
+      text-transform: uppercase;
+      user-select: none;
+    }
+
+    .footer-legal {
+      display: flex;
+      gap: 32px;
+      font-size: 0.65rem;
+      text-transform: uppercase;
+      letter-spacing: 0.15em;
+      color: var(--text-muted);
+    }
+    .footer-legal a { transition: color 0.3s; }
+    .footer-legal a:hover { color: var(--white); }
+
+    /* ============ HORARIOS ============ */
+    .schedule-grid {
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: 0;
+      margin-top: 48px;
+    }
+    .schedule-item {
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: 8px;
+      padding: 24px 0;
+      border-top: 1px solid var(--border);
+      align-items: center;
+    }
+    @media (min-width: 768px) {
+      .schedule-item { grid-template-columns: 200px 1fr auto; gap: 24px; }
+    }
+    .schedule-item:last-child { border-bottom: 1px solid var(--border); }
+    .schedule-day {
+      font-size: 0.65rem;
+      letter-spacing: 0.15em;
+      text-transform: uppercase;
+      color: var(--text-muted);
+    }
+    .schedule-name {
+      font-size: 1.125rem;
+      font-weight: 400;
+      letter-spacing: -0.01em;
+    }
+    .schedule-time {
+      font-size: 0.8rem;
+      color: var(--accent);
+      font-weight: 500;
+    }
+
+    /* ============ ANIMATIONS ============ */
+    .fade-in {
+      opacity: 0;
+      transform: translateY(30px);
+      transition: opacity 0.8s ease, transform 0.8s ease;
+    }
+    .fade-in.visible {
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    /* ============ RESPONSIVE FIXES ============ */
+    @media (max-width: 640px) {
+      .section { padding: 80px 0; }
+      .section-header { margin-bottom: 48px; }
+      .cell-card { aspect-ratio: 3 / 4; }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- ============ NAVIGATION ============ -->
+  <nav class="nav">
+    <div class="nav-brand">
+      <span class="nav-brand-name">IEQ Costeira</span>
+      <span class="nav-brand-sub">Igreja do Evangelho Quadrangular</span>
+    </div>
+    <button class="nav-toggle" onclick="openMenu()" aria-label="Abrir menu">
+      <span class="nav-toggle-text">Menu</span>
+      <div class="hamburger">
+        <span></span>
+        <span></span>
+      </div>
+    </button>
+  </nav>
+
+  <!-- ============ FULLSCREEN MENU ============ -->
+  <div class="menu-overlay" id="menuOverlay">
+    <div class="menu-header">
+      <div>
+        <span class="nav-brand-name" style="color:#fff; font-weight:700; font-size:1.125rem; letter-spacing:-0.03em; text-transform:uppercase;">IEQ Costeira</span>
+      </div>
+      <button class="menu-close" onclick="closeMenu()" aria-label="Fechar menu">
+        <span class="nav-toggle-text">Fechar</span>
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg>
+      </button>
+    </div>
+    <div class="menu-content">
+      <ul class="menu-links">
+        <li><a href="#sobre" onclick="closeMenu()">Sobre<span class="menu-num">01</span></a></li>
+        <li><a href="#visao" onclick="closeMenu()">Visao Celular<span class="menu-num">02</span></a></li>
+        <li><a href="#celulas" onclick="closeMenu()">Celulas<span class="menu-num">03</span></a></li>
+        <li><a href="#ministerios" onclick="closeMenu()">Ministerios<span class="menu-num">04</span></a></li>
+        <li><a href="#digital" onclick="closeMenu()">Conteudo<span class="menu-num">05</span></a></li>
+        <li><a href="#contato" onclick="closeMenu()">Contato<span class="menu-num">06</span></a></li>
+      </ul>
+    </div>
+  </div>
+
+  <main>
+
+    <!-- ============ HERO ============ -->
+    <section class="hero">
+      <div class="hero-bg"></div>
+      <div class="hero-content">
+        <div>
+          <h1 class="hero-title">
+            Fé<br/>Comunhão<br/><span class="italic">Propósito</span>
+          </h1>
+        </div>
+        <div class="hero-right">
+          <p class="hero-desc">
+            Uma igreja viva em Araucária, PR. Adoramos a Deus, crescemos juntos em comunhão e impactamos vidas através do amor de Cristo.
+          </p>
+          <a href="#sobre" class="btn-outline">
+            Conheça a IEQ Costeira
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="12" y1="5" x2="12" y2="19"/><polyline points="19 12 12 19 5 12"/></svg>
+          </a>
+        </div>
+      </div>
+    </section>
+
+    <!-- ============ HORARIOS DOS CULTOS ============ -->
+    <section class="section" style="background: var(--bg); padding-top: 96px; padding-bottom: 96px;">
+      <div class="container">
+        <div class="section-header">
+          <h2 class="section-title">Horários</h2>
+          <span class="section-label">Cultos Semanais</span>
+        </div>
+        <div class="schedule-grid fade-in">
+          <div class="schedule-item">
+            <span class="schedule-day">Domingo</span>
+            <span class="schedule-name">Culto de Celebração</span>
+            <span class="schedule-time">19h00</span>
+          </div>
+          <div class="schedule-item">
+            <span class="schedule-day">Terça-feira</span>
+            <span class="schedule-name">Culto de Oração e Intercessão</span>
+            <span class="schedule-time">19h30</span>
+          </div>
+          <div class="schedule-item">
+            <span class="schedule-day">Quinta-feira</span>
+            <span class="schedule-name">Culto de Ensino</span>
+            <span class="schedule-time">19h30</span>
+          </div>
+          <div class="schedule-item">
+            <span class="schedule-day">Sábado</span>
+            <span class="schedule-name">Reunião de Células</span>
+            <span class="schedule-time">Diversos horários</span>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ============ SOBRE ============ -->
+    <section id="sobre" class="section about">
+      <div class="container">
+        <div class="about-grid">
+          <div>
+            <h2 class="about-label">Sobre Nós</h2>
+          </div>
+          <div>
+            <p class="about-text-large fade-in">
+              Somos a IEQ Costeira, uma comunidade de fé que acredita no poder transformador do Evangelho. Nossa missão é levar esperança e amor a cada família em Araucária e região.
+            </p>
+            <div class="about-columns fade-in">
+              <p>
+                Fundamentada nos quatro pilares da Igreja do Evangelho Quadrangular — Jesus Cristo Salvador, Batizador com o Espírito Santo, Médico dos médicos e Rei que há de voltar — nossa igreja busca ser um lugar de acolhimento, transformação e crescimento espiritual para todas as pessoas.
+              </p>
+              <p>
+                Localizada no bairro Costeira em Araucária, PR, nossa comunidade se reúne semanalmente para cultos de adoração, estudos bíblicos e reuniões de células. Acreditamos que a verdadeira igreja acontece nos relacionamentos autênticos e no serviço ao próximo.
+              </p>
+            </div>
+            <div class="stats-grid fade-in">
+              <div>
+                <span class="stat-value">2010</span>
+                <span class="stat-label">Fundação</span>
+              </div>
+              <div>
+                <span class="stat-value">15+</span>
+                <span class="stat-label">Células</span>
+              </div>
+              <div>
+                <span class="stat-value">8</span>
+                <span class="stat-label">Ministérios</span>
+              </div>
+              <div>
+                <span class="stat-value">200+</span>
+                <span class="stat-label">Membros</span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ============ VISAO CELULAR ============ -->
+    <section id="visao" class="section vision">
+      <div class="container">
+        <div class="section-header">
+          <h2 class="section-title">Visão Celular</h2>
+          <span class="section-label">Crescimento e Comunhão</span>
+        </div>
+        <div class="vision-grid">
+          <div class="vision-left fade-in">
+            <h3 class="vision-title">
+              Igreja nos<br/><span class="italic">lares</span>
+            </h3>
+            <p class="vision-desc">
+              A visão celular é o coração da nossa igreja. Acreditamos que o verdadeiro discipulado acontece em grupos pequenos, onde cada pessoa é conhecida, amada e discipulada. Nas células, compartilhamos a Palavra de Deus, oramos uns pelos outros e crescemos juntos na fé.
+            </p>
+            <p class="vision-desc">
+              Cada célula é um espaço seguro de acolhimento, onde novos convertidos são integrados à comunidade e membros maduros exercem seus dons no serviço ao próximo. É a igreja que não se limita a quatro paredes, mas alcança lares, bairros e vidas.
+            </p>
+            <p class="vision-desc">
+              A multiplicação de células é o caminho natural de uma comunidade saudável. Quando um grupo cresce em maturidade e número, ele se multiplica, gerando novas células e levando a presença de Deus a mais lugares e mais pessoas.
+            </p>
+          </div>
+          <div class="vision-image fade-in">
+            <img src="https://images.unsplash.com/photo-1529070538774-1843cb3265df?q=80&w=2400&auto=format&fit=crop" alt="Pessoas reunidas em comunhão" />
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ============ CELULAS ============ -->
+    <section id="celulas" class="section cells">
+      <div class="container">
+        <div class="section-header">
+          <h2 class="section-title">Nossas Células</h2>
+          <span class="section-label">Grupos de Comunhão</span>
+        </div>
+        <div class="cells-grid">
+
+          <div class="cell-card fade-in">
+            <div class="cell-card-bg">
+              <img src="https://images.unsplash.com/photo-1529399814770-61ad25436896?q=80&w=2400&auto=format&fit=crop" alt="Células de Adolescentes" />
+            </div>
+            <div class="cell-card-content">
+              <span class="cell-card-tag">12 a 17 anos</span>
+              <h3 class="cell-card-title">Adolescentes</h3>
+              <p class="cell-card-desc">Um espaço dinâmico onde adolescentes descobrem sua identidade em Cristo, desenvolvem amizades saudáveis e aprendem princípios bíblicos para a vida.</p>
+            </div>
+          </div>
+
+          <div class="cell-card fade-in" style="margin-top: 0;">
+            <div class="cell-card-bg">
+              <img src="https://images.unsplash.com/photo-1523580494863-6f3031224c94?q=80&w=2400&auto=format&fit=crop" alt="Células de Jovens" />
+            </div>
+            <div class="cell-card-content">
+              <span class="cell-card-tag">18 a 35 anos</span>
+              <h3 class="cell-card-title">Jovens</h3>
+              <p class="cell-card-desc">Jovens apaixonados por Deus que se reúnem para adorar, estudar a Palavra e impactar a geração atual com o Evangelho de Jesus Cristo.</p>
+            </div>
+          </div>
+
+          <div class="cell-card fade-in">
+            <div class="cell-card-bg">
+              <img src="https://images.unsplash.com/photo-1511632765486-a01980e01a18?q=80&w=2400&auto=format&fit=crop" alt="Células de Homens" />
+            </div>
+            <div class="cell-card-content">
+              <span class="cell-card-tag">Comunhão</span>
+              <h3 class="cell-card-title">Homens</h3>
+              <p class="cell-card-desc">Homens que buscam crescer como líderes espirituais em suas famílias, no trabalho e na igreja, fortalecendo-se mutuamente pela Palavra de Deus.</p>
+            </div>
+          </div>
+
+          <div class="cell-card fade-in">
+            <div class="cell-card-bg">
+              <img src="https://images.unsplash.com/photo-1609234656388-0ff363383899?q=80&w=2400&auto=format&fit=crop" alt="Células de Mulheres" />
+            </div>
+            <div class="cell-card-content">
+              <span class="cell-card-tag">Comunhão</span>
+              <h3 class="cell-card-title">Mulheres</h3>
+              <p class="cell-card-desc">Mulheres que se fortalecem juntas na fé, compartilham experiências de vida e crescem no chamado de Deus para cada uma delas.</p>
+            </div>
+          </div>
+
+        </div>
+      </div>
+    </section>
+
+    <!-- ============ MINISTERIOS ============ -->
+    <section id="ministerios" class="section ministries">
+      <div class="container">
+        <div class="section-header">
+          <h2 class="section-title">Ministérios</h2>
+          <span class="section-label">Servindo com Propósito</span>
+        </div>
+        <div class="ministry-list">
+
+          <div class="ministry-item fade-in">
+            <span class="ministry-num">01</span>
+            <h3 class="ministry-name">Louvor e Adoração</h3>
+            <p class="ministry-desc">Músicos e cantores dedicados a conduzir a igreja na presença de Deus através da adoração genuína e apaixonada.</p>
+            <span class="ministry-tag">Música</span>
+          </div>
+
+          <div class="ministry-item fade-in">
+            <span class="ministry-num">02</span>
+            <h3 class="ministry-name">Intercessão</h3>
+            <p class="ministry-desc">Guerreiros de oração que sustentam a igreja e as famílias em oração constante, buscando a direção e o mover de Deus.</p>
+            <span class="ministry-tag">Oração</span>
+          </div>
+
+          <div class="ministry-item fade-in">
+            <span class="ministry-num">03</span>
+            <h3 class="ministry-name">Ensino</h3>
+            <p class="ministry-desc">Formação e discipulado através de estudos bíblicos, escola dominical e cursos de capacitação para membros e líderes.</p>
+            <span class="ministry-tag">Educação</span>
+          </div>
+
+          <div class="ministry-item fade-in">
+            <span class="ministry-num">04</span>
+            <h3 class="ministry-name">Infantil</h3>
+            <p class="ministry-desc">Cuidado e ensino bíblico para as crianças, com atividades lúdicas e pedagógicas que plantam sementes de fé desde cedo.</p>
+            <span class="ministry-tag">Crianças</span>
+          </div>
+
+          <div class="ministry-item fade-in">
+            <span class="ministry-num">05</span>
+            <h3 class="ministry-name">Mídia e Comunicação</h3>
+            <p class="ministry-desc">Equipe responsável pela transmissão online, redes sociais, design e toda a comunicação visual e digital da igreja.</p>
+            <span class="ministry-tag">Digital</span>
+          </div>
+
+          <div class="ministry-item fade-in">
+            <span class="ministry-num">06</span>
+            <h3 class="ministry-name">Acolhimento</h3>
+            <p class="ministry-desc">Recepção e integração de visitantes e novos membros, garantindo que cada pessoa se sinta bem-vinda e parte da família.</p>
+            <span class="ministry-tag">Recepção</span>
+          </div>
+
+        </div>
+      </div>
+    </section>
+
+    <!-- ============ CONTEUDO DIGITAL ============ -->
+    <section id="digital" class="section digital">
+      <div class="container">
+        <div class="section-header">
+          <h2 class="section-title">Conteúdo Digital</h2>
+          <span class="section-label">Acompanhe Online</span>
+        </div>
+        <div class="digital-grid">
+
+          <div class="digital-card fade-in">
+            <div class="digital-card-icon">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><polygon points="5 3 19 12 5 21 5 3"/></svg>
+            </div>
+            <h3 class="digital-card-title">YouTube</h3>
+            <p class="digital-card-desc">Assista aos cultos ao vivo, mensagens edificantes e conteúdos exclusivos no nosso canal. Não perca nenhuma palavra de Deus.</p>
+            <a href="https://youtube.com" target="_blank" rel="noopener noreferrer" class="digital-card-link">
+              Acessar Canal
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="7" y1="17" x2="17" y2="7"/><polyline points="7 7 17 7 17 17"/></svg>
+            </a>
+          </div>
+
+          <div class="digital-card fade-in">
+            <div class="digital-card-icon">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><circle cx="12" cy="12" r="10"/><path d="M8 12a4 4 0 0 1 8 0"/><circle cx="12" cy="12" r="1"/></svg>
+            </div>
+            <h3 class="digital-card-title">Spotify</h3>
+            <p class="digital-card-desc">Ouça pregações, louvores e mensagens devocionais onde estiver. Alimente sua fé durante o dia a dia com nosso conteúdo.</p>
+            <a href="https://spotify.com" target="_blank" rel="noopener noreferrer" class="digital-card-link">
+              Ouvir Agora
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="7" y1="17" x2="17" y2="7"/><polyline points="7 7 17 7 17 17"/></svg>
+            </a>
+          </div>
+
+          <div class="digital-card fade-in">
+            <div class="digital-card-icon">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M12 1a3 3 0 0 0-3 3v8a3 3 0 0 0 6 0V4a3 3 0 0 0-3-3z"/><path d="M19 10v2a7 7 0 0 1-14 0v-2"/><line x1="12" y1="19" x2="12" y2="23"/><line x1="8" y1="23" x2="16" y2="23"/></svg>
+            </div>
+            <h3 class="digital-card-title">Podcast</h3>
+            <p class="digital-card-desc">Nosso podcast semanal com reflexões bíblicas, entrevistas e ensinamentos práticos para fortalecer sua caminhada com Deus.</p>
+            <a href="https://podcasters.spotify.com" target="_blank" rel="noopener noreferrer" class="digital-card-link">
+              Escutar Episódios
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="7" y1="17" x2="17" y2="7"/><polyline points="7 7 17 7 17 17"/></svg>
+            </a>
+          </div>
+
+        </div>
+      </div>
+    </section>
+
+  </main>
+
+  <!-- ============ FOOTER ============ -->
+  <footer id="contato" class="footer">
+    <div class="container">
+      <div class="footer-top">
+
+        <div>
+          <h3 class="footer-cta-title">Venha nos visitar. Você é bem-vindo na IEQ Costeira.</h3>
+          <a href="mailto:contato@ieqcosteira.com.br" class="footer-cta-email">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>
+            contato@ieqcosteira.com.br
+          </a>
+        </div>
+
+        <div class="footer-col">
+          <h4 class="footer-col-title">Endereço</h4>
+          <p>
+            Bairro Costeira<br/>
+            Araucária - PR<br/>
+            Brasil
+          </p>
+          <p style="margin-top: 12px; color: #94a3b8;">(41) 99999-0000</p>
+        </div>
+
+        <div class="footer-col">
+          <h4 class="footer-col-title">Cultos</h4>
+          <p>
+            Domingo - 19h00<br/>
+            Terça - 19h30<br/>
+            Quinta - 19h30
+          </p>
+        </div>
+
+        <div class="footer-col">
+          <h4 class="footer-col-title">Redes Sociais</h4>
+          <a href="https://instagram.com" target="_blank" rel="noopener noreferrer">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="2" y="2" width="20" height="20" rx="5" ry="5"/><path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"/><line x1="17.5" y1="6.5" x2="17.51" y2="6.5"/></svg>
+            Instagram
+          </a>
+          <a href="https://youtube.com" target="_blank" rel="noopener noreferrer">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><polygon points="5 3 19 12 5 21 5 3"/></svg>
+            YouTube
+          </a>
+          <a href="https://facebook.com" target="_blank" rel="noopener noreferrer">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z"/></svg>
+            Facebook
+          </a>
+        </div>
+
+      </div>
+
+      <div class="footer-bottom">
+        <div class="footer-big-text">IEQ</div>
+        <div class="footer-legal">
+          <span>&copy; 2025 IEQ Costeira</span>
+          <span>Araucária - PR</span>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+  <!-- ============ SCRIPTS ============ -->
+  <script>
+    // Menu
+    function openMenu() {
+      document.getElementById('menuOverlay').classList.add('active');
+      document.body.style.overflow = 'hidden';
+    }
+    function closeMenu() {
+      document.getElementById('menuOverlay').classList.remove('active');
+      document.body.style.overflow = '';
+    }
+
+    // Fade-in on scroll
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('visible');
+        }
+      });
+    }, { threshold: 0.1 });
+
+    document.querySelectorAll('.fade-in').forEach(el => observer.observe(el));
+
+    // Offset cells on desktop for staggered look
+    if (window.innerWidth >= 768) {
+      const cards = document.querySelectorAll('.cells-grid .cell-card');
+      cards.forEach((card, i) => {
+        if (i % 2 === 1) card.style.marginTop = '128px';
+      });
+    }
+  </script>
+
+</body>
+</html>
