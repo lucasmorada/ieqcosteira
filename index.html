@@ -378,6 +378,57 @@
       color: var(--text-muted);
     }
 
+.btn-galeria-insana {
+  position: relative;
+  display: inline-block;
+  padding: 14px 28px;
+  font-size: 16px;
+  font-weight: 600;
+  color: #fff;
+  text-decoration: none;
+  border-radius: 12px;
+  overflow: hidden;
+  background: linear-gradient(135deg, #6a11cb, #2575fc);
+  transition: all 0.3s ease;
+  z-index: 1;
+}
+
+.btn-galeria-insana::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 200%;
+  height: 100%;
+  background: linear-gradient(120deg, transparent, rgba(255,255,255,0.4), transparent);
+  transition: all 0.6s ease;
+}
+
+.btn-galeria-insana:hover::before {
+  left: 100%;
+}
+
+.btn-galeria-insana:hover {
+  transform: translateY(-4px) scale(1.03);
+  box-shadow: 0 15px 30px rgba(0,0,0,0.3);
+}
+
+.btn-glow {
+  position: absolute;
+  width: 120%;
+  height: 120%;
+  background: radial-gradient(circle, rgba(255,255,255,0.4), transparent);
+  top: -10%;
+  left: -10%;
+  opacity: 0;
+  transition: opacity 0.3s ease;
+}
+
+.btn-galeria-insana:hover .btn-glow {
+  opacity: 1;
+}
+
+
     /* ============ VISAO CELULAR ============ */
     .vision { background: var(--bg); }
     .vision-grid {
@@ -887,11 +938,14 @@
             </p>
             <div class="about-columns fade-in">
               <p>
-                Fundamentada nos quatro pilares da Igreja do Evangelho Quadrangular — Jesus Cristo Salvador, Batizador com o Espírito Santo, Médico dos médicos e Rei que há de voltar — nossa igreja busca ser um lugar de acolhimento, transformação e crescimento espiritual para todas as pessoas.
-              </p>
-              <p>
                 Localizada no bairro Costeira em Araucária, PR, nossa comunidade se reúne semanalmente para cultos de adoração, estudos bíblicos e reuniões de células. Acreditamos que a verdadeira igreja acontece nos relacionamentos autênticos e no serviço ao próximo.
               </p>
+              <div class="about-cta-wrapper">
+               <a href="fotos.html" class="btn-galeria-insana">
+                 Ver Fotos da Igreja
+               <span class="btn-glow"></span>
+               </a>
+              </div>
             </div>
             <div class="stats-grid fade-in">
               <div>
