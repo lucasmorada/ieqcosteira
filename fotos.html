@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Masonry Grid</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <style>
+    :root {
+      --background: #0a0a0a;
+      --foreground: #fafafa;
+      --muted-foreground: #a1a1aa;
+      --border: #27272a;
+    }
+    body {
+      background-color: var(--background);
+      color: var(--foreground);
+    }
+  </style>
+</head>
+<body class="min-h-screen p-6 lg:p-12">
+  <div class="max-w-7xl mx-auto mb-12">
+    <h1 class="text-5xl font-bold mb-3 text-balance">Masonry Grid</h1>
+    <p class="text-zinc-400 text-lg">A dynamic layout system with balanced distribution.</p>
+  </div>
+
+  <div id="grid" class="max-w-7xl mx-auto grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5 gap-3" style="grid-auto-rows: 20px;">
+  </div>
+
+  <script>
+    const photos = [
+      'https://images.unsplash.com/photo-1506905925346-21bda4d32df4?w=400&q=80',
+      'https://images.unsplash.com/photo-1469474968028-56623f02e42e?w=400&q=80',
+      'https://images.unsplash.com/photo-1447752875215-b2761acb3c5d?w=400&q=80',
+      'https://images.unsplash.com/photo-1433086966358-54859d0ed716?w=400&q=80',
+      'https://images.unsplash.com/photo-1501785888041-af3ef285b470?w=400&q=80',
+      'https://images.unsplash.com/photo-1470071459604-3b5ec3a7fe05?w=400&q=80',
+      'https://images.unsplash.com/photo-1441974231531-c6227db76b6e?w=400&q=80',
+      'https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=400&q=80',
+      'https://images.unsplash.com/photo-1493246507139-91e8fad9978e?w=400&q=80',
+      'https://images.unsplash.com/photo-1518173946687-a4c036bc9f1c?w=400&q=80',
+      'https://images.unsplash.com/photo-1475924156734-496f6cac6ec1?w=400&q=80',
+      'https://images.unsplash.com/photo-1504567961542-e24d9439a724?w=400&q=80',
+      'https://images.unsplash.com/photo-1505765050516-f72dcac9c60e?w=400&q=80',
+      'https://images.unsplash.com/photo-1439066615861-d1af74d74000?w=400&q=80',
+      'https://images.unsplash.com/photo-1472214103451-9374bd1c798e?w=400&q=80',
+      'https://images.unsplash.com/photo-1465795451603-5d41e0a23c91?w=400&q=80',
+      'https://images.unsplash.com/photo-1426604966848-d7adac402bff?w=400&q=80',
+      'https://images.unsplash.com/photo-1470252649378-9c29740c9fa8?w=400&q=80',
+      'https://images.unsplash.com/photo-1464822759023-fed622ff2c3b?w=400&q=80',
+      'https://images.unsplash.com/photo-1500534314209-a25ddb2bd429?w=400&q=80',
+    ];
+
+    const grid = document.getElementById('grid');
+
+    for (let i = 0; i < 40; i++) {
+      const height = Math.floor(Math.random() * 400) + 100;
+      const spans = Math.ceil(height / 20);
+      const photoUrl = photos[Math.floor(Math.random() * photos.length)];
+
+      const item = document.createElement('div');
+      item.className = 'rounded-lg border border-zinc-800 overflow-hidden hover:border-zinc-600 transition-all duration-200 group relative';
+      item.style.gridRowEnd = `span ${spans}`;
+
+      item.innerHTML = `
+        <img 
+          src="${photoUrl}" 
+          alt="Photo ${i + 1}" 
+          class="w-full h-full object-cover"
+          loading="lazy"
+        />
+        <div class="absolute inset-0 bg-black/0 group-hover:bg-black/30 transition-all duration-200"></div>
+        <span class="absolute top-4 left-4 text-sm font-mono font-medium text-white opacity-60 group-hover:opacity-100 transition-opacity duration-200 drop-shadow-lg">
+          ${String(i + 1).padStart(2, '0')}
+        </span>
+      `;
+
+      grid.appendChild(item);
+    }
+  </script>
+</body>
+</html>
